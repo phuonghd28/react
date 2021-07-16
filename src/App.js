@@ -1,25 +1,40 @@
 import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import Grid from '@material-ui/core/Grid'
+import Header from "./views/Header";
+import {BrowserRouter as Router , Switch , Route} from "react-router-dom";
+import Product from "./views/Product";
+import User from "./views/User";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    render(){
+        return (
+            <Grid container>
+                <Grid item style={{background : 'red'}} xs={12}>
+                    <Header/>
+                </Grid>
+                <Grid item style={{background : 'white'}} className="center" xs={12}>
+                    <Router>
+                        <Switch>
+                            <Route path="/product">
+                                <Product/>
+                            </Route>
+                            <Route path="/user">
+                                <User/>
+                            </Route>
+                            <Route path="/">
+                                Home
+                            </Route>
+                        </Switch>
+
+                    </Router>
+                </Grid>
+                <Grid item style={{background : 'blue'}}  xs={12}>Footer</Grid>
+            </Grid>
+        );
+    }
+
 }
 
 export default App;
